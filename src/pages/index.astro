@@ -1,12 +1,319 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 ---
-<html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <title>IHO – Ihre Holding</title>
-  </head>
-  <body>
-    <h1>IHO Website</h1>
-    <p>Astro Grundsetup erfolgreich.</p>
-  </body>
-</html>
+
+<BaseLayout description="Ihre Holding GmbH ist eine familiengeführte Beteiligungsgesellschaft mit Fokus auf ambulante Pflegedienste in Bayern.">
+  <Nav />
+  <main>
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <h1 id="hero-title">
+          Ambulante Pflege.<br />
+          <em>Langfristig gedacht.</em>
+        </h1>
+        <p class="hero__copy">
+          Als familiengeführtes Unternehmen betreiben, erwerben und beraten wir seit mehreren
+          Generationen ambulante Pflegedienste in Bayern – ohne Weiterverkaufsdruck, mit echtem
+          operativem Engagement.
+        </p>
+        <div class="hero__actions" aria-label="Primäre Aktionen">
+          <a class="button button--ghost" href="#nachfolge">Nachfolge & Übergabe</a>
+          <a class="button button--ghost" href="#beratung">Beratung & Begleitung</a>
+          <a class="button button--primary" href="#kontakt">Kontakt</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="nachfolge" class="section nachfolge" aria-labelledby="nachfolge-title">
+      <div class="container">
+        <p class="eyebrow">Nachfolge & Übergabe</p>
+        <h2 id="nachfolge-title">Ihr Lebenswerk in guten Händen</h2>
+        <p class="section-copy nachfolge__intro">
+          Wir suchen ambulante Pflegedienste in Bayern: inhabergeführt, mit offener oder
+          ungeklärter Nachfolge. Wir prüfen jeden Fall individuell.
+        </p>
+        <div class="offer-grid">
+          <article class="offer-card">
+            <h3>Ihr Betrieb bleibt bestehen</h3>
+            <p class="offer-card__body">
+              Wir kaufen nicht, um weiterzuverkaufen. Ihr Betrieb bleibt als eigenständiges
+              Unternehmen erhalten, mit seinen Mitarbeitern, seinen Patienten und dem, was ihn
+              ausmacht.
+            </p>
+          </article>
+          <article class="offer-card">
+            <h3>Persönliche Übergabe</h3>
+            <p class="offer-card__body">
+              Wir sind nach der Übergabe da, nicht als stille Gesellschafter, sondern als
+              verlässliche Partner. Sie bestimmen, wie die Übergabe aussieht.
+            </p>
+          </article>
+          <article class="offer-card">
+            <h3>Auch in schwierigen Situationen</h3>
+            <p class="offer-card__body">
+              Nicht jeder Betrieb läuft gerade rund. Das ist kein Hinderungsgrund. Wenn die
+              Grundlage stimmt, sehen wir Potenzial, wo andere nicht hinschauen.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="beratung" class="section beratung" aria-labelledby="beratung-title">
+      <div class="container">
+        <p class="eyebrow">Beratung & Begleitung</p>
+        <h2 id="beratung-title">Aus der Praxis, für die Praxis</h2>
+        <p class="section-copy beratung__intro">
+          Wir beraten ambulante Pflegedienste, weil wir selbst einen betreiben. Was wir anbieten,
+          haben wir vorher selbst gemacht.
+        </p>
+        <div class="offer-grid beratung__grid">
+          <article class="offer-card">
+            <h3>Übergangsführung</h3>
+            <p class="offer-card__body">
+              Wenn eine Führungsposition kurzfristig besetzt werden muss, übernehmen wir
+              vorübergehend operative Verantwortung, stabilisieren den Alltag und begleiten die
+              Suche nach einer dauerhaften Lösung.
+            </p>
+          </article>
+          <article class="offer-card">
+            <h3>Digitalisierung & Software</h3>
+            <p class="offer-card__body">
+              Von der Einführung und Optimierung von Medifox und DATEV bis zur besseren Nutzung
+              Ihrer Betriebsdaten: Wir helfen Ihnen, Technik so einzusetzen, dass sie den Alltag
+              erleichtert, nicht verkompliziert.
+            </p>
+          </article>
+          <article class="offer-card">
+            <h3>Betrieb & Wachstum</h3>
+            <p class="offer-card__body">
+              Patientenstruktur, Leistungen, Abrechnung, Tourenplanung: Wir schauen gemeinsam
+              mit Ihnen, wo Verbesserungspotenzial liegt, und setzen es Schritt für Schritt um.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="section contact" aria-labelledby="contact-title">
+      <div class="container contact__inner">
+        <p class="eyebrow">Kontakt</p>
+        <h2 id="contact-title">Wir freuen uns auf ein Gespräch</h2>
+        <a class="contact__email" href="mailto:info@ihre-holding.de">info@ihre-holding.de</a>
+        <p class="contact__meta">Ihre Holding GmbH · Zirndorf · Deutschland</p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .hero {
+    align-items: center;
+    background-color: #0E2841;
+    background-image: none;
+    color: var(--cream);
+    display: flex;
+    min-height: 100svh;
+    padding-block: clamp(7rem, 12vw, 10rem) clamp(4rem, 8vw, 7rem);
+  }
+
+  .hero__inner {
+    max-width: 1440px;
+    width: 100%;
+  }
+
+  .hero h1 {
+    color: var(--cream);
+    font-size: clamp(3.4rem, 7.6vw, 6.6rem);
+    line-height: 1;
+    margin: 0 0 1.5rem;
+    max-width: 9em;
+  }
+
+  .hero h1 em {
+    color: var(--teal);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hero__copy {
+    color: var(--cream-muted);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 0;
+    max-width: 66ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .button {
+    align-items: center;
+    border: 1px solid transparent;
+    display: inline-flex;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    min-height: 3rem;
+    padding: 0.875rem 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .button--primary {
+    background: var(--teal);
+    color: var(--navy);
+  }
+
+  .button--primary:hover,
+  .button--primary:focus-visible {
+    background: var(--teal-light);
+    color: var(--navy);
+  }
+
+  .button--ghost {
+    background: transparent;
+    border-color: rgba(3, 195, 222, 0.45);
+    color: var(--cream-muted);
+  }
+
+  .button--ghost:hover,
+  .button--ghost:focus-visible {
+    border-color: var(--teal);
+    color: var(--cream);
+  }
+
+  .button--light:hover,
+  .button--light:focus-visible {
+    background: var(--teal-dark);
+    color: var(--white);
+  }
+
+  h2 {
+    color: var(--text-dark);
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    margin: 0.75rem 0 2.5rem;
+  }
+
+  .nachfolge {
+    background: var(--off-white);
+  }
+
+  .beratung {
+    background: var(--white);
+  }
+
+  .offer-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .offer-card {
+    background: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 2rem;
+  }
+
+  .offer-card h3 {
+    color: var(--text-dark);
+    font-size: 1.65rem;
+    line-height: 1.15;
+    margin: 0 0 1rem;
+  }
+
+  .offer-card__body {
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .section-copy {
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin: 0 0 1.25rem;
+    max-width: 76ch;
+  }
+
+  .section-copy + .section-copy {
+    margin-top: 1.35rem;
+  }
+
+  .nachfolge__intro {
+    margin-bottom: 2.5rem;
+    max-width: none;
+  }
+
+  .beratung__intro {
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    max-width: 82ch;
+  }
+
+  .contact {
+    background-color: #0E2841;
+    background-image: none;
+    color: var(--cream);
+    text-align: center;
+  }
+
+  .contact__inner {
+    margin-inline: auto;
+    max-width: 820px;
+  }
+
+  .contact h2 {
+    color: var(--cream);
+    margin-bottom: 1.25rem;
+  }
+
+  .contact p {
+    color: var(--cream-muted);
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 66ch;
+  }
+
+  .contact__email {
+    color: var(--teal);
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-style: italic;
+    margin: 2rem auto 1.25rem;
+    text-decoration: none;
+  }
+
+  .contact__email:hover,
+  .contact__email:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
+  .contact .contact__meta {
+    color: var(--cream-muted);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 520px) {
+    .hero__actions,
+    .button {
+      width: 100%;
+    }
+  }
+</style>

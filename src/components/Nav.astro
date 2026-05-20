@@ -1,0 +1,186 @@
+---
+const isHome = Astro.url.pathname === '/';
+const anchorPrefix = isHome ? '' : '/';
+const links = [
+  { href: `${anchorPrefix}#nachfolge`, label: 'Nachfolge' },
+  { href: `${anchorPrefix}#beratung`, label: 'Beratung' },
+  { href: `${anchorPrefix}#kontakt`, label: 'Kontakt' }
+];
+---
+
+<header class:list={['site-nav', { 'is-scrolled': !isHome }]} data-nav data-home={String(isHome)}>
+  <div class="site-nav__inner container">
+    <a class="logo" href={`${anchorPrefix}#hero`} aria-label="Ihre Holding GmbH Startseite">
+      <img class="logo__image" src="/IHO-full-logo.png" alt="Ihre Holding GmbH" />
+    </a>
+
+    <button
+      class="site-nav__toggle"
+      type="button"
+      aria-label="Navigation öffnen"
+      aria-expanded="false"
+      aria-controls="site-nav-links"
+      data-menu-toggle
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="site-nav-links" class="site-nav__links" aria-label="Hauptnavigation" data-menu>
+      {
+        links.map((link) => (
+          <a href={link.href}>{link.label}</a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const nav = document.querySelector('[data-nav]');
+  const toggle = document.querySelector('[data-menu-toggle]');
+  const menu = document.querySelector('[data-menu]');
+
+  const syncScrolledState = () => {
+    if (nav?.getAttribute('data-home') !== 'true') return;
+    nav?.classList.toggle('is-scrolled', window.scrollY > 60);
+  };
+
+  syncScrolledState();
+  window.addEventListener('scroll', syncScrolledState, { passive: true });
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('is-open') ?? false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Navigation öffnen');
+    });
+  });
+</script>
+
+<style>
+  .site-nav {
+    color: var(--text-mid);
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition:
+      background-color 180ms ease,
+      box-shadow 180ms ease;
+    z-index: 100;
+  }
+
+  .site-nav.is-scrolled {
+    background: var(--white);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .site-nav__inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-height: 78px;
+    position: relative;
+  }
+
+  .logo {
+    display: inline-flex;
+    height: 58px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .logo__image {
+    height: 100%;
+    object-fit: contain;
+    width: auto;
+  }
+
+  .site-nav__links {
+    align-items: center;
+    display: flex;
+    gap: clamp(1.2rem, 3vw, 2rem);
+  }
+
+  .site-nav__links a {
+    color: var(--cream-muted);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 180ms ease;
+  }
+
+  .site-nav.is-scrolled .site-nav__links a,
+  .site-nav__links.is-open a {
+    color: var(--text-mid);
+  }
+
+  .site-nav__links a:hover,
+  .site-nav__links a:focus-visible {
+    color: var(--teal);
+  }
+
+  .site-nav__toggle {
+    background: transparent;
+    cursor: pointer;
+    display: none;
+    height: 42px;
+    padding: 0;
+    width: 42px;
+  }
+
+  .site-nav__toggle span {
+    background: var(--teal);
+    display: block;
+    height: 2px;
+    margin: 6px auto;
+    width: 24px;
+  }
+
+  @media (max-width: 680px) {
+    .site-nav__inner {
+      min-height: 70px;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .site-nav__toggle {
+      display: block;
+    }
+
+    .site-nav__links {
+      background: var(--white);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      left: 0;
+      padding: 0.75rem clamp(1.5rem, 5vw, 3.5rem) 1rem;
+      position: absolute;
+      right: 0;
+      top: 100%;
+    }
+
+    .site-nav__links.is-open {
+      display: flex;
+    }
+
+    .site-nav__links a {
+      color: var(--text-mid);
+      padding: 0.9rem 0;
+      width: 100%;
+    }
+  }
+</style>

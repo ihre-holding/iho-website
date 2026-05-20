@@ -1,0 +1,91 @@
+---
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__top">
+      <a class="footer-logo" href="/#hero" aria-label="Ihre Holding GmbH Startseite">
+        <img class="footer-logo__image" src="/IHO-full-logo.png" alt="Ihre Holding GmbH" />
+      </a>
+      <nav class="site-footer__links" aria-label="Footer Navigation">
+        <a href="/imprint">Impressum</a>
+        <a href="/privacy">Datenschutz</a>
+        <a href="mailto:info@ihre-holding.de">info@ihre-holding.de</a>
+      </nav>
+    </div>
+    <p class="site-footer__bottom">© 2025 Ihre Holding GmbH</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: #0E2841;
+    background-image: none;
+    color: var(--cream-muted);
+    padding-block: 3rem;
+  }
+
+  .site-footer__top {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    display: inline-flex;
+    height: 58px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  .footer-logo__image {
+    height: 100%;
+    object-fit: contain;
+    width: auto;
+  }
+
+  .site-footer__links {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    justify-content: flex-end;
+  }
+
+  .site-footer__links a {
+    color: var(--cream-muted);
+    font-size: 0.82rem;
+    text-decoration: none;
+    transition: color 180ms ease;
+    white-space: nowrap;
+  }
+
+  .site-footer__links a:hover,
+  .site-footer__links a:focus-visible {
+    color: var(--teal);
+  }
+
+  .site-footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--cream-muted);
+    font-size: 0.72rem;
+    margin: 2rem 0 0;
+    padding-top: 1.2rem;
+    text-align: center;
+  }
+
+  @media (max-width: 680px) {
+    .site-footer__top {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .site-footer__links {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.85rem;
+      justify-content: flex-start;
+    }
+  }
+</style>
