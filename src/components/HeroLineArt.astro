@@ -132,6 +132,39 @@ const linePath =
     }
   }
 
+  /* Handy quer: komplett im sichtbaren Bereich (Portrait + Desktop unverändert) */
+  @media (orientation: landscape) and (max-height: 560px) {
+    .hero-line-art__svg {
+      left: 50%;
+      max-height: min(72dvh, 240px);
+      right: auto;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(76vw, 640px);
+    }
+
+    .hero-line-art__glow {
+      filter: blur(10px);
+      opacity: 0.42;
+      stroke-width: 5;
+    }
+
+    .hero-line-art__path {
+      stroke-width: 2.75;
+    }
+
+    .hero-line-art__scrim {
+      background: linear-gradient(
+        90deg,
+        #0e2841 0%,
+        #0e2841 18%,
+        rgba(14, 40, 65, 0.8) 40%,
+        rgba(14, 40, 65, 0.35) 65%,
+        transparent 82%
+      );
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .hero-line-art__path {
       animation: none;
