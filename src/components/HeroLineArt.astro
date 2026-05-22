@@ -1,7 +1,7 @@
 ---
 /** Abstrahierte Nachzeichnung des IHO-Line-Logos (Zickzack, steigend nach rechts). */
 const linePath =
-  'M 20 234 L 104 142 L 158 182 L 236 78 L 290 118 L 378 22';
+  'M 20 234 L 104 142 L 158 182 L 236 78 L 290 118 L 400 22';
 ---
 
 <div class="hero-line-art" aria-hidden="true">
@@ -35,13 +35,15 @@ const linePath =
   }
 
   .hero-line-art__svg {
+    aspect-ratio: 400 / 260;
     height: auto;
     max-height: 92%;
+    max-width: min(92vw, 1180px);
     position: absolute;
-    right: -6%;
+    right: 0;
     top: 50%;
     transform: translateY(-46%);
-    width: min(88vw, 1180px);
+    width: auto;
   }
 
   .hero-line-art__path,
@@ -103,11 +105,12 @@ const linePath =
 
   @media (max-width: 900px) {
     .hero-line-art__svg {
-      max-height: 52vh;
-      right: -22%;
+      max-height: 52svh;
+      max-width: 100vw;
+      right: 0;
       top: clamp(5.5rem, 17svh, 7.25rem);
       transform: translateY(0);
-      width: 108vw;
+      width: min(100vw, calc(52svh * 400 / 260));
     }
 
     .hero-line-art__glow {
@@ -132,15 +135,16 @@ const linePath =
     }
   }
 
-  /* Handy quer: komplett im sichtbaren Bereich (Portrait + Desktop unverändert) */
+  /* Handy quer: vollständig sichtbar, Linie endet am rechten Rand */
   @media (orientation: landscape) and (max-height: 560px) {
     .hero-line-art__svg {
-      left: 50%;
-      max-height: min(72dvh, 240px);
-      right: auto;
+      left: auto;
+      max-height: min(68dvh, 240px);
+      max-width: 100vw;
+      right: 0;
       top: 50%;
-      transform: translate(-50%, -50%);
-      width: min(76vw, 640px);
+      transform: translateY(-50%);
+      width: min(100vw, calc(68dvh * 400 / 260));
     }
 
     .hero-line-art__glow {
