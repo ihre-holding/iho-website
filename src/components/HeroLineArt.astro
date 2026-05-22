@@ -103,17 +103,31 @@ const linePath =
 
   @media (max-width: 900px) {
     .hero-line-art__svg {
-      opacity: 0.85;
-      right: -18%;
-      width: 120vw;
+      max-height: 52vh;
+      right: -22%;
+      top: clamp(5.5rem, 17svh, 7.25rem);
+      transform: translateY(0);
+      width: 108vw;
+    }
+
+    .hero-line-art__glow {
+      filter: blur(12px);
+      opacity: 0.48;
+      stroke-width: 6;
+    }
+
+    .hero-line-art__path {
+      opacity: 1;
+      stroke-width: 3;
     }
 
     .hero-line-art__scrim {
       background: linear-gradient(
-        180deg,
+        90deg,
         #0e2841 0%,
-        rgba(14, 40, 65, 0.88) 45%,
-        transparent 85%
+        #0e2841 28%,
+        rgba(14, 40, 65, 0.82) 52%,
+        transparent 72%
       );
     }
   }

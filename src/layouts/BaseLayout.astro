@@ -4,7 +4,7 @@ import MotionInit from '../components/MotionInit.astro';
 
 const {
   title = '',
-  description = 'Ihre Holding GmbH ist eine familiengeführte Beteiligungsgesellschaft mit Fokus auf ambulante Pflegedienste.',
+  description = 'Ihre Holding GmbH: familiengeführte Beteiligungsgesellschaft für ambulante Pflegedienste in Bayern. Nachfolge & Übergabe, Beratung aus der Praxis – langfristig, ohne Weiterverkaufsdruck.',
   canonical
 } = Astro.props;
 
@@ -20,7 +20,9 @@ const canonicalUrl = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{siteTitle}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={siteTitle} />

@@ -5,7 +5,10 @@ import Footer from '../components/Footer.astro';
 import HeroLineArt from '../components/HeroLineArt.astro';
 ---
 
-<BaseLayout description="Ihre Holding GmbH ist eine familiengeführte Beteiligungsgesellschaft mit Fokus auf ambulante Pflegedienste in Bayern.">
+<BaseLayout
+  title="Ambulante Pflege. Langfristig gedacht."
+  description="Ihre Holding GmbH: familiengeführte Beteiligungsgesellschaft für ambulante Pflegedienste in Bayern. Nachfolge & Übergabe, Beratung aus der Praxis – langfristig, ohne Weiterverkaufsdruck."
+>
   <Nav />
   <main>
     <section id="hero" class="hero" aria-labelledby="hero-title">
@@ -335,6 +338,12 @@ import HeroLineArt from '../components/HeroLineArt.astro';
   .contact .contact__meta {
     color: var(--cream-muted);
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      align-items: flex-start;
+    }
   }
 
   @media (max-width: 520px) {
