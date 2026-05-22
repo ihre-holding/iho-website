@@ -1,0 +1,132 @@
+---
+/** Abstrahierte Nachzeichnung des IHO-Line-Logos (Zickzack, steigend nach rechts). */
+const linePath =
+  'M 20 234 L 104 142 L 158 182 L 236 78 L 290 118 L 378 22';
+---
+
+<div class="hero-line-art" aria-hidden="true">
+  <svg
+    class="hero-line-art__svg"
+    viewBox="0 0 400 260"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMaxYMid meet"
+  >
+    <defs>
+      <linearGradient id="hero-line-stroke" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#03c3de" stop-opacity="0.45" />
+        <stop offset="50%" stop-color="#03c3de" stop-opacity="0.85" />
+        <stop offset="100%" stop-color="#a6e7ef" stop-opacity="1" />
+      </linearGradient>
+    </defs>
+    <path class="hero-line-art__glow" pathLength="1" d={linePath} />
+    <path class="hero-line-art__path" pathLength="1" d={linePath} stroke="url(#hero-line-stroke)" />
+  </svg>
+  <div class="hero-line-art__scrim"></div>
+</div>
+
+<style>
+  .hero-line-art {
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    z-index: 0;
+  }
+
+  .hero-line-art__svg {
+    height: auto;
+    max-height: 92%;
+    position: absolute;
+    right: -6%;
+    top: 50%;
+    transform: translateY(-46%);
+    width: min(88vw, 1180px);
+  }
+
+  .hero-line-art__path,
+  .hero-line-art__glow {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .hero-line-art__glow {
+    filter: blur(10px);
+    stroke: #03c3de;
+    stroke-width: 5;
+    opacity: 0.35;
+  }
+
+  .hero-line-art__path {
+    stroke-width: 2.75;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: hero-line-draw 11s ease-in-out infinite;
+  }
+
+  .hero-line-art__scrim {
+    background: linear-gradient(
+      90deg,
+      #0e2841 0%,
+      #0e2841 38%,
+      rgba(14, 40, 65, 0.72) 58%,
+      transparent 78%
+    );
+    inset: 0;
+    position: absolute;
+    z-index: 1;
+  }
+
+  /* 1 → 0: einzeichnen (unten → oben); 0 → -1: ausblenden in gleicher Pfadrichtung */
+  @keyframes hero-line-draw {
+    0% {
+      stroke-dashoffset: 1;
+      opacity: 0.42;
+    }
+
+    42% {
+      stroke-dashoffset: 0;
+      opacity: 0.72;
+    }
+
+    58% {
+      stroke-dashoffset: 0;
+      opacity: 0.72;
+    }
+
+    100% {
+      stroke-dashoffset: -1;
+      opacity: 0.42;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-line-art__svg {
+      opacity: 0.85;
+      right: -18%;
+      width: 120vw;
+    }
+
+    .hero-line-art__scrim {
+      background: linear-gradient(
+        180deg,
+        #0e2841 0%,
+        rgba(14, 40, 65, 0.88) 45%,
+        transparent 85%
+      );
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-line-art__path {
+      animation: none;
+      opacity: 0.38;
+      stroke-dashoffset: 0;
+    }
+
+    .hero-line-art__glow {
+      opacity: 0.22;
+    }
+  }
+</style>

@@ -2,12 +2,14 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import HeroLineArt from '../components/HeroLineArt.astro';
 ---
 
 <BaseLayout description="Ihre Holding GmbH ist eine familiengeführte Beteiligungsgesellschaft mit Fokus auf ambulante Pflegedienste in Bayern.">
   <Nav />
   <main>
     <section id="hero" class="hero" aria-labelledby="hero-title">
+      <HeroLineArt />
       <div class="container hero__inner">
         <h1 id="hero-title" class="motion-hero-item" style="--motion-delay: 0ms">
           Ambulante Pflege.<br />
@@ -79,7 +81,7 @@ import Footer from '../components/Footer.astro';
             </p>
           </article>
           <article class="offer-card" data-reveal style="--motion-delay: 120ms">
-            <h3>Digitalisierung & Software</h3>
+            <h3>Digitalisierung <span class="amp">&</span> Software</h3>
             <p class="offer-card__body">
               Von der Einführung und Optimierung von Medifox und DATEV bis zur besseren Nutzung
               Ihrer Betriebsdaten: Wir helfen Ihnen, Technik so einzusetzen, dass sie den Alltag
@@ -87,7 +89,7 @@ import Footer from '../components/Footer.astro';
             </p>
           </article>
           <article class="offer-card" data-reveal style="--motion-delay: 240ms">
-            <h3>Betrieb & Wachstum</h3>
+            <h3>Betrieb <span class="amp">&</span> Wachstum</h3>
             <p class="offer-card__body">
               Patientenstruktur, Leistungen, Abrechnung, Tourenplanung: Wir schauen gemeinsam
               mit Ihnen, wo Verbesserungspotenzial liegt, und setzen es Schritt für Schritt um.
@@ -112,17 +114,22 @@ import Footer from '../components/Footer.astro';
 <style>
   .hero {
     align-items: center;
-    background-color: #0E2841;
+    background-color: #0e2841;
     background-image: none;
     color: var(--cream);
     display: flex;
+    isolation: isolate;
     min-height: 100svh;
+    overflow: hidden;
     padding-block: clamp(7rem, 12vw, 10rem) clamp(4rem, 8vw, 7rem);
+    position: relative;
   }
 
   .hero__inner {
     max-width: 1440px;
+    position: relative;
     width: 100%;
+    z-index: 2;
   }
 
   .hero h1 {
