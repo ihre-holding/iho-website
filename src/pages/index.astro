@@ -9,16 +9,16 @@ import Footer from '../components/Footer.astro';
   <main>
     <section id="hero" class="hero" aria-labelledby="hero-title">
       <div class="container hero__inner">
-        <h1 id="hero-title">
+        <h1 id="hero-title" class="motion-hero-item" style="--motion-delay: 0ms">
           Ambulante Pflege.<br />
           <em>Langfristig gedacht.</em>
         </h1>
-        <p class="hero__copy">
+        <p class="hero__copy motion-hero-item" style="--motion-delay: 100ms">
           Als familiengeführtes Unternehmen betreiben, erwerben und beraten wir seit mehreren
           Generationen ambulante Pflegedienste in Bayern – ohne Weiterverkaufsdruck, mit echtem
           operativem Engagement.
         </p>
-        <div class="hero__actions" aria-label="Primäre Aktionen">
+        <div class="hero__actions motion-hero-item" style="--motion-delay: 220ms" aria-label="Primäre Aktionen">
           <a class="button button--ghost" href="#nachfolge">Nachfolge & Übergabe</a>
           <a class="button button--ghost" href="#beratung">Beratung & Begleitung</a>
           <a class="button button--primary" href="#kontakt">Kontakt</a>
@@ -28,14 +28,14 @@ import Footer from '../components/Footer.astro';
 
     <section id="nachfolge" class="section nachfolge" aria-labelledby="nachfolge-title">
       <div class="container">
-        <p class="eyebrow">Nachfolge & Übergabe</p>
-        <h2 id="nachfolge-title">Ihr Lebenswerk in guten Händen</h2>
-        <p class="section-copy nachfolge__intro">
+        <p class="eyebrow" data-reveal>Nachfolge & Übergabe</p>
+        <h2 id="nachfolge-title" data-reveal style="--motion-delay: 80ms">Ihr Lebenswerk in guten Händen</h2>
+        <p class="section-copy nachfolge__intro" data-reveal style="--motion-delay: 160ms">
           Wir suchen ambulante Pflegedienste in Bayern: inhabergeführt, mit offener oder
           ungeklärter Nachfolge. Wir prüfen jeden Fall individuell.
         </p>
         <div class="offer-grid">
-          <article class="offer-card">
+          <article class="offer-card" data-reveal style="--motion-delay: 0ms">
             <h3>Ihr Betrieb bleibt bestehen</h3>
             <p class="offer-card__body">
               Wir kaufen nicht, um weiterzuverkaufen. Ihr Betrieb bleibt als eigenständiges
@@ -43,14 +43,14 @@ import Footer from '../components/Footer.astro';
               ausmacht.
             </p>
           </article>
-          <article class="offer-card">
+          <article class="offer-card" data-reveal style="--motion-delay: 120ms">
             <h3>Persönliche Übergabe</h3>
             <p class="offer-card__body">
               Wir sind nach der Übergabe da, nicht als stille Gesellschafter, sondern als
               verlässliche Partner. Sie bestimmen, wie die Übergabe aussieht.
             </p>
           </article>
-          <article class="offer-card">
+          <article class="offer-card" data-reveal style="--motion-delay: 240ms">
             <h3>Auch in schwierigen Situationen</h3>
             <p class="offer-card__body">
               Nicht jeder Betrieb läuft gerade rund. Das ist kein Hinderungsgrund. Wenn die
@@ -63,14 +63,14 @@ import Footer from '../components/Footer.astro';
 
     <section id="beratung" class="section beratung" aria-labelledby="beratung-title">
       <div class="container">
-        <p class="eyebrow">Beratung & Begleitung</p>
-        <h2 id="beratung-title">Aus der Praxis, für die Praxis</h2>
-        <p class="section-copy beratung__intro">
+        <p class="eyebrow" data-reveal>Beratung & Begleitung</p>
+        <h2 id="beratung-title" data-reveal style="--motion-delay: 80ms">Aus der Praxis, für die Praxis</h2>
+        <p class="section-copy beratung__intro" data-reveal style="--motion-delay: 160ms">
           Wir beraten ambulante Pflegedienste, weil wir selbst einen betreiben. Was wir anbieten,
           haben wir vorher selbst gemacht.
         </p>
         <div class="offer-grid beratung__grid">
-          <article class="offer-card">
+          <article class="offer-card" data-reveal style="--motion-delay: 0ms">
             <h3>Übergangsführung</h3>
             <p class="offer-card__body">
               Wenn eine Führungsposition kurzfristig besetzt werden muss, übernehmen wir
@@ -78,7 +78,7 @@ import Footer from '../components/Footer.astro';
               Suche nach einer dauerhaften Lösung.
             </p>
           </article>
-          <article class="offer-card">
+          <article class="offer-card" data-reveal style="--motion-delay: 120ms">
             <h3>Digitalisierung & Software</h3>
             <p class="offer-card__body">
               Von der Einführung und Optimierung von Medifox und DATEV bis zur besseren Nutzung
@@ -86,7 +86,7 @@ import Footer from '../components/Footer.astro';
               erleichtert, nicht verkompliziert.
             </p>
           </article>
-          <article class="offer-card">
+          <article class="offer-card" data-reveal style="--motion-delay: 240ms">
             <h3>Betrieb & Wachstum</h3>
             <p class="offer-card__body">
               Patientenstruktur, Leistungen, Abrechnung, Tourenplanung: Wir schauen gemeinsam
@@ -99,10 +99,10 @@ import Footer from '../components/Footer.astro';
 
     <section id="kontakt" class="section contact" aria-labelledby="contact-title">
       <div class="container contact__inner">
-        <p class="eyebrow">Kontakt</p>
-        <h2 id="contact-title">Wir freuen uns auf ein Gespräch</h2>
-        <a class="contact__email" href="mailto:info@ihre-holding.de">info@ihre-holding.de</a>
-        <p class="contact__meta">Ihre Holding GmbH · Zirndorf · Deutschland</p>
+        <p class="eyebrow" data-reveal>Kontakt</p>
+        <h2 id="contact-title" data-reveal style="--motion-delay: 80ms">Wir freuen uns auf ein Gespräch</h2>
+        <a class="contact__email" data-reveal style="--motion-delay: 180ms" href="mailto:info@ihre-holding.de">info@ihre-holding.de</a>
+        <p class="contact__meta" data-reveal style="--motion-delay: 280ms">Ihre Holding GmbH · Zirndorf · Deutschland</p>
       </div>
     </section>
   </main>
@@ -170,23 +170,32 @@ import Footer from '../components/Footer.astro';
     transition:
       background-color 180ms ease,
       border-color 180ms ease,
-      color 180ms ease;
+      color 180ms ease,
+      transform 180ms ease;
   }
 
   .button--primary {
-    background: var(--teal);
-    color: var(--navy);
+    background-color: var(--color-main-turquoise);
+    color: var(--color-dark-blue);
   }
 
   .button--primary:hover,
-  .button--primary:focus-visible {
-    background: var(--teal-light);
-    color: var(--navy);
+  .button--primary:focus-visible,
+  .button--primary:active {
+    background-color: var(--color-light-turquoise);
+    color: var(--color-dark-blue);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .button--primary:hover,
+    .button--primary:focus-visible {
+      transform: scale(1.02);
+    }
   }
 
   .button--ghost {
     background: transparent;
-    border-color: rgba(3, 195, 222, 0.45);
+    border-color: color-mix(in srgb, var(--color-main-turquoise) 45%, transparent);
     color: var(--cream-muted);
   }
 
@@ -227,6 +236,17 @@ import Footer from '../components/Footer.astro';
     background: var(--white);
     border: 1px solid rgba(0, 0, 0, 0.07);
     padding: 2rem;
+    transition:
+      border-color 200ms ease,
+      box-shadow 200ms ease;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .offer-card:hover,
+    .offer-card:focus-within {
+      border-color: color-mix(in srgb, var(--color-main-turquoise) 28%, transparent);
+      box-shadow: 0 8px 28px rgba(14, 40, 65, 0.07);
+    }
   }
 
   .offer-card h3 {

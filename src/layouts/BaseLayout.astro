@@ -1,4 +1,7 @@
 ---
+import '../styles/motion.css';
+import MotionInit from '../components/MotionInit.astro';
+
 const {
   title = '',
   description = 'Ihre Holding GmbH ist eine familiengeführte Beteiligungsgesellschaft mit Fokus auf ambulante Pflegedienste.',
@@ -35,23 +38,34 @@ const canonicalUrl = canonical ? new URL(canonical, Astro.site) : new URL(Astro.
   </head>
   <body>
     <slot />
+    <MotionInit />
   </body>
 </html>
 
 <style is:global>
   :root {
-    --teal: #03c3de;
-    --teal-dark: #008c9e;
-    --teal-light: #a6e7ef;
-    --navy: #0E2841;
-    --navy-mid: #163e64;
+    /* Markenfarben */
+    --color-main-turquoise: #03c3de;
+    --color-light-turquoise: #a6e7ef;
+    --color-green-turquoise: #008c9e;
+    --color-blue-turquoise: #163e64;
+    --color-dark-blue: #0e2841;
     --white: #ffffff;
-    --off-white: #f7f8fa;
-    --text-dark: #0E2841;
-    --text-mid: #163e64;
-    --text-muted: #008c9e;
+    --gray-light: #f7f8fa;
+    --gray-muted: #c8c4bc;
     --cream: #f5f3ee;
-    --cream-muted: #c8c4bc;
+
+    /* Aliase (bestehende Komponenten) */
+    --teal: var(--color-main-turquoise);
+    --teal-light: var(--color-light-turquoise);
+    --teal-dark: var(--color-green-turquoise);
+    --navy: var(--color-dark-blue);
+    --navy-mid: var(--color-blue-turquoise);
+    --off-white: var(--gray-light);
+    --text-dark: var(--color-dark-blue);
+    --text-mid: var(--color-blue-turquoise);
+    --text-muted: var(--color-green-turquoise);
+    --cream-muted: var(--gray-muted);
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body: 'DM Sans', Arial, sans-serif;
   }

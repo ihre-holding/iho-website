@@ -73,14 +73,24 @@ const links = [
     right: 0;
     top: 0;
     transition:
-      background-color 180ms ease,
-      box-shadow 180ms ease;
+      background-color 280ms ease,
+      box-shadow 280ms ease;
     z-index: 100;
   }
 
   .site-nav.is-scrolled {
     background: var(--white);
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .site-nav.is-scrolled .logo__image {
+    transition: opacity 280ms ease, transform 280ms ease;
+  }
+
+  .site-nav.is-scrolled .logo:hover .logo__image,
+  .site-nav.is-scrolled .logo:focus-visible .logo__image {
+    opacity: 0.88;
+    transform: scale(1.02);
   }
 
   .site-nav__inner {
@@ -112,22 +122,100 @@ const links = [
 
   .site-nav__links a {
     color: var(--cream-muted);
+    display: inline-block;
     font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.12em;
+    position: relative;
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 180ms ease;
+    transition:
+      color 280ms ease,
+      opacity 280ms ease,
+      transform 200ms ease;
+  }
+
+  .site-nav__links a::after {
+    background: var(--teal);
+    bottom: -0.35rem;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 220ms ease;
+    width: 100%;
+  }
+
+  .site-nav:not(.is-scrolled) .site-nav__links a::after {
+    background: var(--teal-light);
   }
 
   .site-nav.is-scrolled .site-nav__links a,
   .site-nav__links.is-open a {
     color: var(--text-mid);
+    opacity: 1;
   }
 
-  .site-nav__links a:hover,
-  .site-nav__links a:focus-visible {
+  .site-nav:not(.is-scrolled) .site-nav__links a:hover,
+  .site-nav:not(.is-scrolled) .site-nav__links a:focus-visible {
+    color: var(--teal-light);
+  }
+
+  .site-nav.is-scrolled .site-nav__links a:hover,
+  .site-nav.is-scrolled .site-nav__links a:focus-visible,
+  .site-nav__links.is-open a:hover,
+  .site-nav__links.is-open a:focus-visible {
     color: var(--teal);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .site-nav__links a:hover,
+    .site-nav__links a:focus-visible {
+      transform: translateY(-1px);
+    }
+  }
+
+  .site-nav__links a:hover::after,
+  .site-nav__links a:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .site-nav.is-scrolled .site-nav__links a {
+      animation: nav-link-settle 520ms ease backwards;
+    }
+
+    .site-nav.is-scrolled .site-nav__links a:nth-child(1) {
+      animation-delay: 0ms;
+    }
+
+    .site-nav.is-scrolled .site-nav__links a:nth-child(2) {
+      animation-delay: 70ms;
+    }
+
+    .site-nav.is-scrolled .site-nav__links a:nth-child(3) {
+      animation-delay: 140ms;
+    }
+  }
+
+  @keyframes nav-link-settle {
+    0% {
+      color: var(--text-mid);
+      opacity: 0;
+      transform: translateY(6px);
+    }
+
+    45% {
+      color: var(--teal);
+    }
+
+    100% {
+      color: var(--text-mid);
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .site-nav__toggle {
@@ -163,24 +251,73 @@ const links = [
     .site-nav__links {
       background: var(--white);
       box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
-      display: none;
+      display: flex;
       flex-direction: column;
       gap: 0;
       left: 0;
+      opacity: 0;
       padding: 0.75rem clamp(1.5rem, 5vw, 3.5rem) 1rem;
+      pointer-events: none;
       position: absolute;
       right: 0;
       top: 100%;
+      transform: translateY(-8px);
+      transition:
+        opacity 250ms ease,
+        transform 250ms ease,
+        visibility 250ms ease;
+      visibility: hidden;
     }
 
     .site-nav__links.is-open {
-      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      visibility: visible;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .site-nav__links.is-open a {
+        animation: nav-link-settle 360ms ease backwards;
+      }
+
+      .site-nav__links.is-open a:nth-child(1) {
+        animation-delay: 40ms;
+      }
+
+      .site-nav__links.is-open a:nth-child(2) {
+        animation-delay: 90ms;
+      }
+
+      .site-nav__links.is-open a:nth-child(3) {
+        animation-delay: 140ms;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .site-nav__links {
+        transition: none;
+      }
+
+      .site-nav__links a,
+      .site-nav.is-scrolled .site-nav__links a,
+      .site-nav__links.is-open a {
+        animation: none;
+      }
     }
 
     .site-nav__links a {
-      color: var(--text-mid);
       padding: 0.9rem 0;
       width: 100%;
+    }
+
+    .site-nav.is-scrolled .site-nav__links a,
+    .site-nav__links.is-open a {
+      color: var(--text-mid);
+    }
+
+    .site-nav__links a::after {
+      bottom: 0.55rem;
     }
   }
 </style>
