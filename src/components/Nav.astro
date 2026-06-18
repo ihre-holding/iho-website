@@ -4,7 +4,8 @@ const anchorPrefix = isHome ? '' : '/';
 const links = [
   { href: `${anchorPrefix}#nachfolge`, label: 'Nachfolge' },
   { href: `${anchorPrefix}#beratung`, label: 'Beratung' },
-  { href: `${anchorPrefix}#kontakt`, label: 'Kontakt' }
+  { href: `${anchorPrefix}#kontakt`, label: 'Kontakt' },
+  { href: 'https://www.ihre-pflege.de', label: 'Ihre Pflege', external: true }
 ];
 ---
 
@@ -30,7 +31,12 @@ const links = [
     <nav id="site-nav-links" class="site-nav__links" aria-label="Hauptnavigation" data-menu>
       {
         links.map((link) => (
-          <a href={link.href}>{link.label}</a>
+          <a
+            href={link.href}
+            {...(link.external ? { target: '_blank', rel: 'noopener' } : {})}
+          >
+            {link.label}
+          </a>
         ))
       }
     </nav>
@@ -198,6 +204,10 @@ const links = [
     .site-nav.is-scrolled .site-nav__links a:nth-child(3) {
       animation-delay: 140ms;
     }
+
+    .site-nav.is-scrolled .site-nav__links a:nth-child(4) {
+      animation-delay: 210ms;
+    }
   }
 
   @keyframes nav-link-settle {
@@ -291,6 +301,10 @@ const links = [
 
       .site-nav__links.is-open a:nth-child(3) {
         animation-delay: 140ms;
+      }
+
+      .site-nav__links.is-open a:nth-child(4) {
+        animation-delay: 190ms;
       }
     }
 
